@@ -1,3 +1,5 @@
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+
 const refs = {
   delayInput: document.querySelector('input[name="delay"]'),
   delayStepInput: document.querySelector('input[name="step"]'),
@@ -35,10 +37,10 @@ function handlePromiseCreation(event) {
   for (let i = 1; i <= amount; i += 1) {
     createPromise(i, firstDelay)
       .then(({ position, delay }) => {
-        console.log(`✅ Fulfilled promise ${position} in ${delay}ms`);
+        Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`);
       })
       .catch(({ position, delay }) => {
-        console.log(`❌ Rejected promise ${position} in ${delay}ms`);
+        Notify.failure(`❌ Rejected promise ${position} in ${delay}ms`);
       });
   }
   refs.form.reset();
