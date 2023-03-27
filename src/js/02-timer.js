@@ -32,7 +32,10 @@ const options = {
 flatpickr(refs.timeInput, options);
 
 function handleStartTimer() {
-  const selectedDateTime = flatpickr.parseDate(refs.timeInput.value);
+  const selectedDateTime = flatpickr.parseDate(
+    refs.timeInput.value,
+    'Y-m-d H:i'
+  );
   timerId = setInterval(() => {
     refs.startBtn.setAttribute('disabled', '');
     const currentTime = new Date();
